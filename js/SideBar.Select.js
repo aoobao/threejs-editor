@@ -167,6 +167,19 @@ Sidebar.Select = function (editor) {
     }
   }
 
+  function getDefaultStatus (obj) {
+    var position = obj.position.clone()
+    var scale = obj.scale.clone()
+    var rotation = obj.rotation.clone()
+    var rst = {
+      position: position,
+      scale: scale,
+      rotation: rotation
+    }
+
+    return rst
+  }
+
   // 添加设备按钮点击回调
   function clickHandle ({ name, row }) {
     // alert(name)
@@ -185,16 +198,6 @@ Sidebar.Select = function (editor) {
       }
     })
 
-
-
-    // progressBar.animate(1, {
-    //   duration: 3000
-    // }, function () {
-    //   // console.log('Animation has finished');
-    //   progressBar.destroy()
-    // })
-
-
     var mtlLoader = new THREE.MTLLoader()
     var loader = new THREE.OBJLoader()
     var path = './object/camera4/'
@@ -211,11 +214,13 @@ Sidebar.Select = function (editor) {
 
             obj.scale.set(scale, scale, scale)
 
+            obj._default = getDefaultStatus(obj)
+
             editor.execute(new AddObjectCommand(editor, obj))
             // editor.addObject(obj)
 
             container.remove(row)
-            for (let i = rows.length - 1; i >= 0; i--) {
+            for (var i = rows.length - 1; i >= 0; i--) {
               var crow = rows[i]
               if (crow === row) {
                 rows.slice(i, 1)
@@ -256,7 +261,7 @@ Sidebar.Select = function (editor) {
     //     // editor.addObject(obj)
 
     //     container.remove(row)
-    //     for (let i = rows.length - 1; i >= 0; i--) {
+    //     for (var i = rows.length - 1; i >= 0; i--) {
     //       var crow = rows[i]
     //       if (crow === row) {
     //         rows.slice(i, 1)
@@ -299,7 +304,7 @@ Sidebar.Select = function (editor) {
 
     // container.remove(row)
 
-    // for (let i = rows.length - 1; i >= 0; i--) {
+    // for (var i = rows.length - 1; i >= 0; i--) {
     //   var crow = rows[i]
     //   if (crow === row) {
     //     rows.slice(i, 1)

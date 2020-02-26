@@ -300,7 +300,7 @@ Sidebar.Object = function (editor) {
 	objectVisibleRow.add(new UI.Text(strings.getKey('sidebar/object/visible')).setWidth('90px'));
 	objectVisibleRow.add(objectVisible);
 
-	container.add(objectVisibleRow);
+	// container.add(objectVisibleRow);
 
 	// frustumCulled
 
@@ -388,6 +388,39 @@ Sidebar.Object = function (editor) {
 
 		deleteRow.setDisplay(isHidden ? 'none' : '')
 	})
+
+	var resetRow = new UI.Row()
+	var objectReset = new UI.Button(strings.getKey('sidebar/object/reset'))
+		.setWidth('100%')
+		.setBackgroundColor('#409EFF')
+		.setColor('#fff')
+		.onClick(function () {
+			// TODO
+			var object = editor.selected
+			var d = object._default
+			object.position.copy(d.position)
+			object.scale.copy(d.scale)
+			object.rotation.copy(d.rotation)
+
+			updateUI(object)
+			// update()
+			signals.objectChanged.dispatch(object)
+			// signals.sceneGraphChanged.dispatch();
+
+		})
+	resetRow.add(objectReset)
+
+	container.add(resetRow)
+
+	signals.objectSelected.add(function (obj) {
+		var isHidden = true
+		if (obj !== null && obj.userData.isDevice) {
+			isHidden = false
+		}
+
+		resetRow.setDisplay(isHidden ? 'none' : '')
+	})
+
 
 
 	//

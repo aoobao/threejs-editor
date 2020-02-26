@@ -113,6 +113,8 @@ var Strings = function (config) {
 			'sidebar/object/renderorder': 'Render Order',
 			'sidebar/object/userdata': 'User data',
 
+			'sidebar/object/reset': 'Reset',
+
 			'sidebar/geometry/type': 'Type',
 			'sidebar/geometry/new': 'New',
 			'sidebar/geometry/uuid': 'UUID',
@@ -429,6 +431,8 @@ var Strings = function (config) {
 			'sidebar/object/renderorder': '渲染次序',
 			'sidebar/object/userdata': '自定义数据',
 
+			'sidebar/object/reset': '重置',
+
 			'sidebar/geometry/type': '类型',
 			'sidebar/geometry/new': '更新',
 			'sidebar/geometry/uuid': '识别码',
@@ -576,6 +580,8 @@ var Strings = function (config) {
 			'sidebar/project/antialias': '抗锯齿',
 			'sidebar/project/shadows': '阴影',
 			'sidebar/project/materials': 'Materials',
+
+
 
 			'sidebar/settings': '设置',
 			'sidebar/settings/language': '语言',

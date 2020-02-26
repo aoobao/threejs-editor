@@ -7,7 +7,7 @@ var Config = function () {
 	var name = 'threejs-editor';
 
 	var storage = {
-		'language': 'en',
+		'language': 'zh',
 
 		'autosave': true,
 
